@@ -1,0 +1,45 @@
+ENVIRONMENT:
+    OS: macOS Catalina 10.15.4
+
+    Conan version: 1.26.0 (also happens in older versions)
+
+    For the profile, I used my default (
+        [settings]
+        os=Macos
+        os_build=Macos
+        arch=x86_64
+        arch_build=x86_64
+        compiler=apple-clang
+        compiler.version=10.0
+        compiler.libcxx=libc++
+        build_type=Release
+        [options]
+        [build_requires]
+        [env]
+    ), but I don't think it matters much.
+
+STEPS TO REPRODUCE THE BUG:
+
+- Add the following Conan remote, if you don't clready have it:
+    conan-center: https://conan.bintray.com [Verify SSL: True]
+
+- package-3 depends on package-2, which depends on package-1, so do the following:
+    From the folder 'package-1', run:
+        conan create . 1.0@error/test --profile=<PROFILE> --build=outdated
+
+    From the folder 'package-2', run:
+        conan create . 1.0@error/test --profile=<PROFILE> --build=outdated
+
+    From the folder 'package-3', run:
+        conan create . 1.0@error/test --profile=<PROFILE> --build=outdated -o package-3:shared=True
+
+    (up until this point, all should have gone well)
+
+    Now try to build package-3 again, this time explicitly asking to rebuild libcurl:
+        conan create . 1.0@error/test --profile=<PROFILE> --build=libcurl -o package-3:shared=True
+
+    This last step should fail with a following error:
+            assert node.package_id != PACKAGE_ID_UNKNOWN
+            AssertionError
+
+            ERROR: <EMPTY>
