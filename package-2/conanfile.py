@@ -5,7 +5,9 @@ import os
 class Package2Conan(ConanFile):
     name = "package-2"
     settings = "os", "compiler", "build_type", "arch", "toolchain"
-    options = {"shared": [True, False]}
+    options = {
+        "shared": [True, False]
+    }
     default_options = ("shared=False")
     generators = "cmake"
 

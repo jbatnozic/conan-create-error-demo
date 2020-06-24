@@ -8,8 +8,14 @@ class Package1Conan(ConanFile):
     requires = (
         "libcurl/[=7.66.0]"
     )
-    options = {"shared": [True, False], "fPIC": [True, False], "backend": ["curl", "apple"]}
-    default_options = {"shared": False, "fPIC": True, "backend": "curl"}
+    options = {
+        "shared": [True, False],
+         "fPIC": [True, False],
+    }
+    default_options = {
+        "shared": False, 
+        "fPIC": True
+    }
 
     def package_id(self):
         self.info.requires['libcurl'].full_version_mode()

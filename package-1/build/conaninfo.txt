@@ -1,0 +1,53 @@
+[settings]
+    arch=x86_64
+    build_type=Release
+    compiler=apple-clang
+    compiler.libcxx=libc++
+    compiler.version=10.0
+    os=Macos
+
+[requires]
+    libcurl/7.66.0
+    zlib/1.2.11:534dcc368c999e07e81f146b3466b8f656ef1f55
+
+[options]
+    fPIC=True
+    shared=False
+
+[full_settings]
+    arch=x86_64
+    build_type=Release
+    compiler=apple-clang
+    compiler.libcxx=libc++
+    compiler.version=10.0
+    os=Macos
+
+[full_requires]
+    libcurl/7.66.0:bb9b755d41112bbe1ce9966b3679b7f68e8509ba
+    zlib/1.2.11:534dcc368c999e07e81f146b3466b8f656ef1f55
+
+[full_options]
+    fPIC=True
+    shared=False
+    libcurl:darwin_ssl=True
+    libcurl:fPIC=True
+    libcurl:shared=False
+    libcurl:with_brotli=False
+    libcurl:with_largemaxwritesize=False
+    libcurl:with_ldap=False
+    libcurl:with_libidn=False
+    libcurl:with_libmetalink=False
+    libcurl:with_libpsl=False
+    libcurl:with_librtmp=False
+    libcurl:with_libssh2=False
+    libcurl:with_nghttp2=False
+    libcurl:with_openssl=True
+    zlib:fPIC=True
+    zlib:minizip=False
+    zlib:shared=False
+
+[recipe_hash]
+
+
+[env]
+

@@ -11,9 +11,6 @@ class Package3Conan(ConanFile):
     }
     default_options = (
         "shared=False",
-        "protobuf:shared=True",
-        "framework-protobufcomms:shared=True",
-        "mapdisplay-tile-model:shared=True",
         "fPIC=True"
     )
     
